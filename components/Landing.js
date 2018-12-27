@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     formContainer: {
         flex: 1,
         alignItems: "center",
+        height: "auto",
         width: "70%",
         marginTop: 25,
         margin: 15,
