@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import Landing from "./components/Landing.js"
 import { NativeRouter, Route }  from "react-router-native"
 import CreateAccount from './components/CreateAccount.js';
+import Swipe from "./components/Swipe.js"
 
 
 export default class App extends React.Component {
@@ -12,6 +13,7 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Route exact path="/" component={Landing}></Route>
           <Route path="/createAccount" component={CreateAccount}></Route>
+          <Route path="/Swipe" component={Swipe}></Route>
         </View>
       </NativeRouter>
     );

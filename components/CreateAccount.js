@@ -1,6 +1,5 @@
 import React from "react"
-import { View, Text } from "react-native"
-import { Container, Header, Content, Icon, Picker, Form, Input, Item, Label } from "native-base"
+import { Container, Header, Content, Icon, Picker, Form, Input, Item, Label, Button, Text } from "native-base"
 import { Link } from "react-router-native"
 
 class CreateAccount extends React.Component {
@@ -55,6 +54,11 @@ class CreateAccount extends React.Component {
                             <Label>Location:</Label>
                             <Input/>
                         </Item>
+                        <Button block success style={{width: "80%", margin: 15, flex: 1, alignSelf: "center"}}>
+                            <Link to="/Swipe">
+                                <Text>Create!</Text>
+                            </Link>
+                        </Button>
                     </Form>
                 </Content>
             </Container>
