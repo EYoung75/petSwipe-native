@@ -1,15 +1,19 @@
 import React from 'react'
-import { Image, Alert } from "react-native"
-import { Container, Header, Text, H1, H2, View, DeckSwiper, Left, Body, Card, CardItem, Thumbnail, Icon } from "native-base"
+import { Image, Alert, View } from "react-native"
+import { Container, Header, Text, H1, H2, DeckSwiper, Left, Body, Card, CardItem, Thumbnail, Icon } from "native-base"
 import { Link, Route } from "react-router-native"
-import Favorites from "./Favorites.js"
+import AppFooter from "./Footer.js"
 
 class Swipe extends React.Component {
     constructor(){
         super();
         this.state = {
              cards: [{}],
-             selected: 0
+             selected: 0,
+             liked: [{
+                 name: "Max",
+                 species: "Dog"
+             }]
         }
     }
 
@@ -24,21 +28,17 @@ class Swipe extends React.Component {
     render(){
         if(this.state.selected === 0) { 
             return (
-                <Container style={{height: "100%", width: "100%"}}>
-                    <Header style={{marginTop:10, justifyContent: "space-between"}}>
-                        <Icon name="settings"/>
+                <View style={{height: "100%", width: "100%"}}>
+                <Container style={{height: "100%", width: "100%", flex: 1, justifyContent: "space-evenly"}}>
+                    <Header style={{marginTop:10, alignContent: "center"}}>
                         <H1>PetSwipe</H1>
-                        <Link to="/favorites">
-                            <Icon name="heart" style={{color: "red"}}/>
-                        </Link>
-                        <Route path="/favorites" render={() => <Favorites liked={this.state.liked}></Favorites>}></Route>
                     </Header>
                     <Container style={{height: "100%", width: "90%", marginTop: "10%", alignSelf: "center"}}>
                         <DeckSwiper
                             dataSource={this.state.cards}
                             looping={false}
                             renderItem={item =>
-                                    <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id}  onSwipeRight={this.swipeRight()} onSwipeLeft={this.swipeLeft()}> 
+                                    <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id}> 
                                             <CardItem>
                                                 <Left>
                                                     <Body>
@@ -59,6 +59,8 @@ class Swipe extends React.Component {
                         />
                     </Container>
                 </Container>
+                <AppFooter></AppFooter>
+                </View>
             )
         } else {
             return (
