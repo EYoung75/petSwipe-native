@@ -1,32 +1,26 @@
 import React from 'react'
 import { Image, Alert, View } from "react-native"
 import { Container, Header, Text, H1, H2, DeckSwiper, Left, Body, Card, CardItem, Thumbnail, Icon } from "native-base"
-import { Link, Route } from "react-router-native"
-import AppFooter from "./Footer.js"
+import AppFooter from "./AppFooter.js"
+
 
 class Swipe extends React.Component {
     constructor(){
-        super();
-        this.state = {
-             cards: [{}],
-             selected: 0,
-             liked: [{
-                 name: "Max",
-                 species: "Dog"
-             }]
+        super()
+        this.state={
+            favorites: []
         }
     }
-
-    swipeRight(){
-        Alert.alert("right")
+    swipeRight(id){
+        this.state.favorites.push(id)
     }
 
     swipeLeft(){
         Alert.alert("left")
-    }
+    } 
 
     render(){
-        if(this.state.selected === 0) { 
+
             return (
                 <View style={{height: "100%", width: "100%"}}>
                 <Container style={{height: "100%", width: "100%", flex: 1, justifyContent: "space-evenly"}}>
@@ -35,7 +29,7 @@ class Swipe extends React.Component {
                     </Header>
                     <Container style={{height: "100%", width: "90%", marginTop: "10%", alignSelf: "center"}}>
                         <DeckSwiper
-                            dataSource={this.state.cards}
+                            dataSource={this.props.cards}
                             looping={false}
                             renderItem={item =>
                                     <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id}> 
@@ -62,25 +56,9 @@ class Swipe extends React.Component {
                 <AppFooter></AppFooter>
                 </View>
             )
-        } else {
-            return (
-                <Container style={{height: "100%", width: "100%"}}>
-                    <Header style={{marginTop:10, justifyContent: "space-between"}}>
-                        <Icon name="settings"/>
-                        <H1>PetSwipe</H1>
-                        <Icon name="heart" style={{color: "red"}}/>
-                    </Header>    
-                </Container>
-            )
         }
     }
+    
 
-    async componentDidMount() {
-        let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
-        let json = await response.json()
-        this.setState({cards: json})
-    }
-
-}
 
 export default Swipe

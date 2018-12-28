@@ -1,7 +1,7 @@
 import React from "react"
 import { View, Text } from "react-native"
 import { Header, Container, H1, Button } from "native-base"
-import AppFooter from "./Footer.js"
+import AppFooter from "./AppFooter.js"
 
 class Settings extends React.Component{
     render() {

@@ -10,13 +10,19 @@ import Profile from "./components/Profile.js"
 
 
 export default class App extends React.Component {
+  constructor(){
+    super();
+    this.state={
+      pets: []
+    }
+  }
   render() {
     return (
       <NativeRouter>
         <View style={styles.container}>
           <Route exact path="/" component={Landing}></Route>
           <Route path="/createAccount" component={CreateAccount}></Route>
-          <Route path="/Swipe" component={Swipe}></Route>
+          <Route path="/Swipe" render={() => <Swipe cards={this.state.pets}></Swipe>}></Route>
           <Route path="/Settings" component={Settings}/>
           <Route path="/Favorites" component={Favorites}/>
           <Route path="/Profile" component={Profile}/>
@@ -24,6 +30,12 @@ export default class App extends React.Component {
       </NativeRouter>
     );
   }
+
+  async componentDidMount() {
+    let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
+    let json = await response.json()
+    this.setState({pets: json})
+}
 }
 
 const styles = StyleSheet.create({
