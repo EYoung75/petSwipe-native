@@ -8,11 +8,13 @@ class Swipe extends React.Component {
     constructor(){
         super()
         this.state={
-            favorites: []
+            favorites: [],
+            loaded: false
         }
-    }
-    swipeRight(id){
-        this.state.favorites.push(id)
+    } 
+
+    swipeRight(){
+        
     }
 
     swipeLeft(){
@@ -32,7 +34,7 @@ class Swipe extends React.Component {
                             dataSource={this.props.cards}
                             looping={false}
                             renderItem={item =>
-                                    <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id}> 
+                                    <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id} onSwipeRight={swipeRight(value)} onSwipeLeft={swipeLeft(value)}> 
                                             <CardItem>
                                                 <Left>
                                                     <Body>
