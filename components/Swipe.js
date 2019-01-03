@@ -11,15 +11,15 @@ class Swipe extends React.Component {
             favorites: [],
             loaded: false
         }
-    } 
+    }  
 
     swipeRight(){
-        
+        Alert.alert("thanks homie")
     }
 
     swipeLeft(){
-        Alert.alert("left")
-    } 
+        Alert.alert("okay fuck you too bish")
+    }
 
     render(){
 
@@ -33,8 +33,10 @@ class Swipe extends React.Component {
                         <DeckSwiper
                             dataSource={this.props.cards}
                             looping={false}
+                            onSwipeLeft={() => this.swipeLeft()}
+                            onSwipeRight={() => this.swipeRight()}
                             renderItem={item =>
-                                    <Card style={{elevation: 3, borderColor: "black", borderWidth: 2}} id={item.id} onSwipeRight={swipeRight(value)} onSwipeLeft={swipeLeft(value)}> 
+                                    <Card style={{elevation: 20, borderColor: "black", borderWidth: 2}} id={item.id}> 
                                             <CardItem>
                                                 <Left>
                                                     <Body>
