@@ -6,6 +6,22 @@ import AppFooter from "./AppFooter.js"
 
 class Favorites extends React.Component {
     render() {
+        const favoriteList = this.props.favorites.map(fav => {
+            return (
+                <ListItem thumbnail>
+                    <Left>
+                        <Thumbnail medium source={{uri: fav.pet_picture_url}}/>
+                    </Left>
+                    <Body>
+                        <Text>{fav.pet_name}</Text>
+                        <Text note>{fav.species}</Text>
+                    </Body>
+                    <Right>
+                        <Icon name="ios-arrow-round-forward"></Icon>
+                    </Right>
+                </ListItem>
+            )
+        })
         return (
             <View style={{height: "100%", width: "100%"}}>
                 <Container style={{height: "100%", width: "100%"}}>
@@ -14,18 +30,7 @@ class Favorites extends React.Component {
                     </Header>
                     <Content>
                         <List>
-                            <ListItem thumbnail>
-                                <Left>
-                                    <Thumbnail medium source={{uri: "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}}/>
-                                </Left>
-                                <Body>
-                                    <Text>Fido</Text>
-                                    <Text note>Dog</Text>
-                                </Body>
-                                <Right>
-                                    <Icon name="ios-arrow-round-forward"></Icon>
-                                </Right>
-                            </ListItem>
+                            {favoriteList}
                         </List>
                     </Content>
                 </Container>

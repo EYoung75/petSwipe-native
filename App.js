@@ -13,7 +13,8 @@ export default class App extends React.Component {
   constructor(){
     super();
     this.state={
-      pets: []
+      pets: [],
+      favorites: []
     }
   }
   render() {
@@ -22,9 +23,9 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Route exact path="/" component={Landing}></Route>
           <Route path="/createAccount" component={CreateAccount}></Route>
-          <Route path="/Swipe" render={() => <Swipe cards={this.state.pets}></Swipe>}></Route>
+          <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight}></Swipe>}></Route>
           <Route path="/Settings" component={Settings}/>
-          <Route path="/Favorites" component={Favorites}/>
+          <Route path="/Favorites" render={() => <Favorites favorites={this.state.favorites}/>}/>
           <Route path="/Profile" component={Profile}/>
         </View>
       </NativeRouter>
@@ -35,6 +36,12 @@ export default class App extends React.Component {
     let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
     let json = await response.json()
     this.setState({pets: json})
+}
+
+swipeRight = (e) => {
+  this.setState(prevState => ({
+      favorites: [...prevState.favorites, e]
+  }))
 }
 }
 

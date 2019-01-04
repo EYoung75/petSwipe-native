@@ -13,9 +13,11 @@ class Swipe extends React.Component {
         }
     }  
 
-    swipeRight(){
-        Alert.alert("thanks homie")
-    }
+    // swipeRight(e){
+    //     this.setState(prevState => ({
+    //         favorites: [...prevState.favorites, e]
+    //     }))
+    // }
 
     swipeLeft(){
         Alert.alert("okay fuck you too bish")
@@ -34,7 +36,7 @@ class Swipe extends React.Component {
                             dataSource={this.props.cards}
                             looping={false}
                             onSwipeLeft={() => this.swipeLeft()}
-                            onSwipeRight={() => this.swipeRight()}
+                            onSwipeRight={(e) => this.props.swipeRight(e)}
                             renderItem={item =>
                                     <Card style={{elevation: 20, borderColor: "black", borderWidth: 2}} id={item.id}> 
                                             <CardItem>
