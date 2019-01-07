@@ -1,6 +1,6 @@
 import React from "react"
-import { Container, Header, Content, Icon, Picker, Form, Input, Item, Label, Button, Text } from "native-base"
-import { Link } from "react-router-native"
+import { Container, Button, Header, Content, Icon, Picker, Form, Input, Item, Label, Text } from "native-base"
+import { Link, Redirect } from "react-router-native"
 
 class CreateAccount extends React.Component {
     constructor(props){
@@ -35,6 +35,7 @@ class CreateAccount extends React.Component {
                 },
                 body: JSON.stringify(newUser)
             })
+            // .then(<Redirect push to="/Swipe"/>)
         } else if(this.state.selected === "adoptee"){
             var newUser = {
                 user_name_b: this.state.username,
@@ -98,12 +99,12 @@ class CreateAccount extends React.Component {
                             <Label>Location:</Label>
                             <Input onChange={this.handleInput.bind(this)} name="location"/>
                         </Item>
-                        <Button onClick={this.handleSubmit()} block success style={{width: "80%", margin: 15, flex: 1, alignSelf: "center"}}>
-                            <Link to="/Swipe">
-                                <Text>Create!</Text>
-                            </Link>
-                        </Button>
-                    </Form>
+                            <Button block success style={{margin: 20}} onPress={() => this.handleSubmit()}>
+                                <Link to="/Swipe"> 
+                                    <Text>Create Account</Text>
+                                </Link>
+                            </Button>                   
+                        </Form>
                 </Content>
             </Container>
         )

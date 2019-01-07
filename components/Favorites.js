@@ -1,41 +1,47 @@
 import React from "react"
-import { View } from "react-native"
-import { Container, Header, Content, List, ListItem, H1, Thumbnail, Icon, Text, Left, Body, Right, Button } from 'native-base';
+import { TouchableWithoutFeedback } from "react-native"
 import AppFooter from "./AppFooter.js"
+import { ListItem, Left, Thumbnail, Header, H1, Right, Body, Icon, Text, Container, Content } from "native-base"
+import ExpandedProfile from "./ExpandedProfile.js"
 
 
 class Favorites extends React.Component {
     render() {
-        const favoriteList = this.props.favorites.map(fav => {
+        const favorites = this.props.favorites
+        const favoriteList = favorites.map(item => {
+
             return (
-                <ListItem thumbnail>
-                    <Left>
-                        <Thumbnail medium source={{uri: fav.pet_picture_url}}/>
-                    </Left>
-                    <Body>
-                        <Text>{fav.pet_name}</Text>
-                        <Text note>{fav.species}</Text>
-                    </Body>
-                    <Right>
-                        <Icon name="ios-arrow-round-forward"></Icon>
-                    </Right>
-                </ListItem>
+                <TouchableWithoutFeedback key={item.id} onPress={(e) => this.props.selectPet(e, item)}>
+                    <ListItem thumbnail>
+                        <Left>
+                            <Thumbnail medium source={{uri: item.pet_picture_url}}/>
+                        </Left>
+                        <Body>
+                            <Text>{item.pet_name}</Text>
+                            <Text note>{item.species}</Text>
+                        </Body>
+                        <Right>
+                            <Icon name="ios-arrow-forward"/>
+                        </Right>
+                    </ListItem>
+                </TouchableWithoutFeedback>
+                
             )
         })
         return (
-            <View style={{height: "100%", width: "100%"}}>
-                <Container style={{height: "100%", width: "100%"}}>
-                    <Header style={{marginTop:10, alignContent: "center"}}>
-                        <H1>PetSwipe</H1>
-                    </Header>
-                    <Content>
-                        <List>
-                            {favoriteList}
-                        </List>
-                    </Content>
-                </Container>
-                <AppFooter/>
-            </View>
+            <Container style={{height: "100%", width: "100%", alignContent: "center"}}>
+                <Header>
+                    <H1>PetSwipe</H1>
+                </Header>
+               {this.props.selected === 0 ? 
+                <Content>
+                    {favoriteList}
+                </Content>
+                :
+                <ExpandedProfile {...this.props}/>
+               }
+                <AppFooter />
+            </Container>
         )
     }
 }

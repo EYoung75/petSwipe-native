@@ -24,16 +24,16 @@ class Landing extends React.Component {
                             <Item rounded style={styles.input}>
                                 <Input secureTextEntry={true} onChangeText={(password) => this.setState({password})}></Input>
                             </Item>
-                            <Button block style={{marginTop: 15}}>
-                                <Text>Login</Text>
+                            <Button title="Login" block style={{marginTop: 15}}>
+                                <Text style={{color: "white"}}>Login</Text>
                             </Button>
                             </Form>
                         <Text>OR</Text>
-                        <Button block success style={{marginTop: 15, marginRight: 25, marginLeft: 25}}>
-                            <Link to="/createAccount">
-                                <Text>Create Account</Text>
-                            </Link>
-                        </Button>
+                        <Link to="/createAccount">
+                            <View style={{height: 50, width: 200, alignItems: "center", justifyContent: "center", borderRadius:"5%", marginTop: 15, marginRight: 25, marginLeft: 25, backgroundColor: "green"}}>
+                                <Text style={{color: "white"}}>Create an account</Text>
+                            </View>
+                        </Link>
 
 
                     </Container>

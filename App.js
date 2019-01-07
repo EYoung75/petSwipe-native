@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Alert} from 'react-native'
+import { NativeRouter, Route } from "react-router-native"
 import Landing from "./components/Landing.js"
-import { NativeRouter, Route }  from "react-router-native"
 import CreateAccount from './components/CreateAccount.js';
 import Swipe from "./components/Swipe.js"
 import Settings from "./components/Settings.js"
@@ -14,7 +14,8 @@ export default class App extends React.Component {
     super();
     this.state={
       pets: [],
-      favorites: []
+      favorites: [],
+      selected: 0
     }
   }
   render() {
@@ -23,9 +24,9 @@ export default class App extends React.Component {
         <View style={styles.container}>
           <Route exact path="/" component={Landing}></Route>
           <Route path="/createAccount" component={CreateAccount}></Route>
-          <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight}></Swipe>}></Route>
+          <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight} swipeLeft={this.swipeLeft}></Swipe>}></Route>
           <Route path="/Settings" component={Settings}/>
-          <Route path="/Favorites" render={() => <Favorites favorites={this.state.favorites}/>}/>
+          <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
         </View>
       </NativeRouter>
@@ -38,11 +39,28 @@ export default class App extends React.Component {
     this.setState({pets: json})
 }
 
+
+selectPet = (e, item) => {
+  let selected = fetch(`https://petswipedb.herokuapp.com/pet_info${item.id}`)
+  .then(response => response.json())
+  .then(response => {console.log(response)})
+} 
+
 swipeRight = (e) => {
   this.setState(prevState => ({
       favorites: [...prevState.favorites, e]
   }))
 }
+
+swipeLeft = (e) => {
+  var initialPets = [...this.state.pets]
+  var newPets = initialPets.indexOf(e.id-1)
+  if (newPets !== -1) {
+    initialPets.splice(newPets, 1);
+    this.setState({pets: initialPets});
+  }
+}
+
 }
 
 const styles = StyleSheet.create({
