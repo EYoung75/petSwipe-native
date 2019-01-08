@@ -1,13 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View, Alert} from 'react-native'
-import { NativeRouter, Route } from "react-router-native"
+import { NativeRouter, Route, Redirect } from "react-router-native"
 import Landing from "./components/Landing.js"
-import CreateAccount from './components/CreateAccount.js';
+import CreateAccount from './components/CreateAccount.js'
 import Swipe from "./components/Swipe.js"
 import Settings from "./components/Settings.js"
 import Favorites from "./components/Favorites.js"
 import Profile from "./components/Profile.js"
-
 
 export default class App extends React.Component {
   constructor(){
@@ -26,7 +25,7 @@ export default class App extends React.Component {
           <Route path="/createAccount" component={CreateAccount}></Route>
           <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight} swipeLeft={this.swipeLeft}></Swipe>}></Route>
           <Route path="/Settings" component={Settings}/>
-          <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet}/>}/>
+          <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet} deselect={this.deselectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
         </View>
       </NativeRouter>
@@ -41,10 +40,12 @@ export default class App extends React.Component {
 
 
 selectPet = (e, item) => {
-  let selected = fetch(`https://petswipedb.herokuapp.com/pet_info${item.id}`)
-  .then(response => response.json())
-  .then(response => {console.log(response)})
+  this.setState({selected: item.id})
 } 
+
+deselectPet = () => {
+  this.setState({selected: 0})
+}
 
 swipeRight = (e) => {
   this.setState(prevState => ({

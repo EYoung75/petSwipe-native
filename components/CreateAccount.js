@@ -71,7 +71,7 @@ class CreateAccount extends React.Component {
                 </Header>
                 <Content>
                     <Form>
-                        <Picker
+                        {/* <Picker
                         mode="dropwdown"
                         iosIcon={<Icon name="ios-arrow-down" />}
                         placeholder="Select Account Type"
@@ -82,7 +82,7 @@ class CreateAccount extends React.Component {
                         >
                         <Picker.Item label="Adopter (Looking for a new friend)" value="adopter"/>
                         <Picker.Item label="Adoptee (Looking for a new home)" value="adoptee"/>
-                        </Picker>
+                        </Picker> */}
                         <Item inlineLabel>
                             <Label>Username:</Label>
                             <Input onChange={(text)=>this.setState({text})} name="username"/>
