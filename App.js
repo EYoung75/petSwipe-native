@@ -7,6 +7,7 @@ import Swipe from "./components/Swipe.js"
 import Settings from "./components/Settings.js"
 import Favorites from "./components/Favorites.js"
 import Profile from "./components/Profile.js"
+import PetForm from "./components/PetForm.js"
 
 export default class App extends React.Component {
   constructor(){
@@ -27,6 +28,7 @@ export default class App extends React.Component {
           <Route path="/Settings" component={Settings}/>
           <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet} deselect={this.deselectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
+          <Route path="/PetForm" render={() => <PetForm/> }/>
         </View>
       </NativeRouter>
     );
