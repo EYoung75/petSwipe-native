@@ -16,20 +16,22 @@ class Landing extends React.Component {
                 <Container style={styles.formContainer}>
                     <Text style={{fontSize: 25, fontFamily: "Futura-CondensedMedium"}}>Login:</Text>
                     <Form style={{padding: 10}}>
-                        <Label style={{padding: 5}}>Username:</Label>
+                        <Label style={{padding: 5, marginLeft: 10}}>Username:</Label>
                         <Item rounded style={styles.input}>
                             <Input onChangeText={(username) => this.setState({username})}></Input>
                         </Item>
-                        <Label style={{padding: 5}}>Password:</Label>
+                        <Label style={{padding: 5, marginLeft: 10}}>Password:</Label>
                         <Item rounded style={styles.input}>
                             <Input secureTextEntry={true} onChangeText={(password) => this.setState({password})}></Input>
                         </Item>
-                        <Button title="Login" block style={{marginTop: 15}}>
-                            <Text style={{color: "white"}}>Login</Text>
-                        </Button>
+                        <Link to="/Swipe">
+                            <View style={{height: 50, width: 200, alignItems: "center", justifyContent: "center", borderRadius:"5%", marginTop: 15, marginRight: 25, marginLeft: 25, backgroundColor: "blue"}}>
+                                <Text style={{color: "white"}}>Login</Text>
+                            </View>
+                        </Link>
                     </Form>
                     <Text>OR</Text>
-                    <Link to="/createAccount">
+                    <Link to="/CreateAccount">
                         <View style={{height: 50, width: 200, alignItems: "center", justifyContent: "center", borderRadius:"5%", marginTop: 15, marginRight: 25, marginLeft: 25, backgroundColor: "green"}}>
                             <Text style={{color: "white"}}>Create an account</Text>
                         </View>
@@ -54,8 +56,9 @@ const styles = StyleSheet.create({
         marginTop: 25
       },
     input: {
-        width: "85%",
-        height: "20%"
+        width: "100%",
+        height: "20%",
+        alignSelf: "center"
     },
     formContainer: {
         flex: 1,

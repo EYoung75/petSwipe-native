@@ -24,7 +24,7 @@ class Swipe extends React.Component {
                             <CardItem>
                                 <Left>
                                     <Body>
-                                        <H2 style={{fontSize: 28, fontFamily: "Futura-CondensedMedium"}}>{item.pet_name}</H2>
+                                        <H2 style={{fontSize: 27, fontFamily: "Futura-CondensedMedium"}}>{item.pet_name}</H2>
                                         <Text style={{fontSize: 20, marginLeft: "15%"}} note>{item.species}</Text>
                                     </Body>
                                 </Left>

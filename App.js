@@ -21,9 +21,14 @@ export default class App extends React.Component {
   }
 
   async componentDidMount() {
+    if(this.state.loaded === false){
       let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
       let json = await response.json()
-      this.setState({pets: json})
+      this.setState({
+          pets: json,
+          loaded: true
+      })
+    }
   }
 
   selectPet = (e, item) => {
@@ -38,18 +43,24 @@ export default class App extends React.Component {
     this.setState(prevState => ({
         favorites: [...prevState.favorites, e]
     }))
+    // this.removeFromArray(e)
   }
 
   swipeLeft = (e) => {
-    var newPets = this.state.pets
+    // this.removeFromArray(e)
   }
+
+  // removeFromArray = (e) => {
+  //   var filteredPets = this.state.pets.filter(pet => pet.id !== e.id)
+  //   this.setState({pets: filteredPets})
+  // }
 
   render() {
     return (
       <NativeRouter>
         <View style={styles.container}>
           <Route exact path="/" component={Landing}></Route>
-          <Route path="/createAccount" component={CreateAccount}></Route>
+          <Route path="/CreateAccount" component={CreateAccount}></Route>
           <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight} swipeLeft={this.swipeLeft}></Swipe>}></Route>
           <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet} deselect={this.deselectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
