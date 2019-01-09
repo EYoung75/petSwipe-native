@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, View, Alert} from 'react-native'
-import { NativeRouter, Route, Redirect } from "react-router-native"
+import { StyleSheet, View} from 'react-native'
+import { NativeRouter, Route } from "react-router-native"
 import Landing from "./components/Landing.js"
 import CreateAccount from './components/CreateAccount.js'
 import Swipe from "./components/Swipe.js"
@@ -19,6 +19,31 @@ export default class App extends React.Component {
       loaded: false
     }
   }
+
+  async componentDidMount() {
+      let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
+      let json = await response.json()
+      this.setState({pets: json})
+  }
+
+  selectPet = (e, item) => {
+    this.setState({selected: item.id})
+  } 
+
+  deselectPet = () => {
+    this.setState({selected: 0})
+  }
+
+  swipeRight = (e) => {
+    this.setState(prevState => ({
+        favorites: [...prevState.favorites, e]
+    }))
+  }
+
+  swipeLeft = (e) => {
+    var newPets = this.state.pets
+  }
+
   render() {
     return (
       <NativeRouter>
@@ -32,42 +57,8 @@ export default class App extends React.Component {
           <Route path="/Settings" component={Settings}/>
         </View>
       </NativeRouter>
-    );
+    )
   }
-
-  async componentDidMount() {
-    if(this.state.loaded === false){
-      let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
-      let json = await response.json()
-      this.setState({pets: json})
-      this.setState({loaded: true})
-    } 
-}
-
-
-selectPet = (e, item) => {
-  this.setState({selected: item.id})
-} 
-
-deselectPet = () => {
-  this.setState({selected: 0})
-}
-
-swipeRight = (e) => {
-  this.setState(prevState => ({
-      favorites: [...prevState.favorites, e]
-  }))
-  var newPets = this.state.pets
-  newPets.splice(e.id, 1)
-  this.setState({pets: newPets})
-}
-
-swipeLeft = (e) => {
-  var newPets = this.state.pets
-  newPets.splice(e.id, 1)
-  this.setState({pets: newPets})
-}
-
 }
 
 const styles = StyleSheet.create({
@@ -76,5 +67,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-});
+  }
+})

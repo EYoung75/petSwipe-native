@@ -35,7 +35,6 @@ class CreateAccount extends React.Component {
                 },
                 body: JSON.stringify(newUser)
             })
-            // .then(<Redirect push to="/Swipe"/>)
         } else if(this.state.selected === "adoptee"){
             var newUser = {
                 user_name_b: this.state.username,
@@ -71,18 +70,6 @@ class CreateAccount extends React.Component {
                 </Header>
                 <Content>
                     <Form>
-                        {/* <Picker
-                        mode="dropwdown"
-                        iosIcon={<Icon name="ios-arrow-down" />}
-                        placeholder="Select Account Type"
-                        placeholderStyle={{ color: "#bfc6ea" }}
-                        placeholderIconColor="#007aff"
-                        selectedValue={this.state.selected}
-                        onValueChange={this.onValueChange.bind(this)}
-                        >
-                        <Picker.Item label="Adopter (Looking for a new friend)" value="adopter"/>
-                        <Picker.Item label="Adoptee (Looking for a new home)" value="adoptee"/>
-                        </Picker> */}
                         <Item inlineLabel>
                             <Label>Username:</Label>
                             <Input onChange={(text)=>this.setState({text})} name="username"/>
@@ -99,12 +86,12 @@ class CreateAccount extends React.Component {
                             <Label>Location:</Label>
                             <Input onChange={this.handleInput.bind(this)} name="location"/>
                         </Item>
-                            <Button block success style={{margin: 20}} onPress={() => this.handleSubmit()}>
-                                <Link to="/Swipe"> 
-                                    <Text>Create Account</Text>
-                                </Link>
-                            </Button>                   
-                        </Form>
+                        <Button block success style={{margin: 20}} onPress={() => this.handleSubmit()}>
+                            <Link to="/Swipe"> 
+                                <Text>Create Account</Text>
+                            </Link>
+                        </Button>                   
+                    </Form>
                 </Content>
             </Container>
         )
