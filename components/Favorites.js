@@ -5,6 +5,7 @@ import { ListItem, Left, Thumbnail, Header, H1, H2, Right, Body, Icon, Text, Con
 import ExpandedProfile from "./ExpandedProfile.js"
 
 class Favorites extends React.Component {
+    
     render() {
         const favorites = this.props.favorites
         const favoriteList = favorites.map(item => {

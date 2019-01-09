@@ -1,6 +1,7 @@
 import React from "react"
 import { Container, Content, Form, Item, Input, Label, Icon, Picker, Header, H1, H2 } from "native-base"
 import { Link } from "react-router-native"
+import { TouchableOpacity, View, Text, StyleSheet } from "react-native"
 
 class PetForm extends React.Component {
     constructor(){
@@ -92,6 +93,31 @@ class PetForm extends React.Component {
             pet_age: value
         })
     }
+
+    handleSubmit = () => {
+        var newPet = {
+            pet_name: this.state.pet_name,
+            pet_age: this.state.pet_age,
+            species: this.state.species,
+            pet_gender: this.state.pet_gender,
+            age: this.state.pet_age,
+            coat_length: this.state.coat_length,
+            pet_size: this.state.pet_size,
+            house_trained: this.state.house_trained,
+            vaccinations: this.state.vaccinations,
+            spay_neuter: this.state.spay_neuter,
+            preferences: this.state.preferences,
+            pet_picture_url: this.state.pet_picture_url
+        }
+        fetch("https://petswipedb.herokuapp.com/pet_info", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newPet)
+          })
+        .then(console.log(newPet))
+    }
     
     render(){
         return (
@@ -107,11 +133,11 @@ class PetForm extends React.Component {
                     <Form>
                         <Item floatingLabel>
                             <Label>Pet Name:</Label>
-                            <Input onChange={this.handleName.bind(this)}/>
+                            <Input onChangeText={this.handleName.bind(this)}/>
                         </Item>
                         <Item floatingLabel>
                             <Label>Pet Age:</Label>
-                            <Input onChange={this.handleAge.bind(this)}/>
+                            <Input onChangeText={this.handleAge.bind(this)}/>
                         </Item>
                         <Picker
                             mode="dropdown"
@@ -132,8 +158,8 @@ class PetForm extends React.Component {
                             selectedValue={this.state.pet_gender}
                             onValueChange={this.handleGender.bind(this)}
                         >
-                            <Picker.Item label="House Trained" value={true}/>
-                            <Picker.Item label="Not House Trained" value={false}/>
+                            <Picker.Item label="Male" value="Male"/>
+                            <Picker.Item label="Female" value="Female"/>
                         </Picker>
                         <Picker
                             mode="dropdown"
@@ -190,19 +216,38 @@ class PetForm extends React.Component {
                         </Picker>
                         <Item floatingLabel>
                             <Label>Preferences:</Label>
-                            <Input onChange={this.handlePrefs.bind(this)}/>
+                            <Input onChangeText={this.handlePrefs.bind(this)}/>
                         </Item>
                         <Item floatingLabel>
                             <Label>Pet Picture Url:</Label>
-                            <Input onChange={this.handleUrl.bind(this)}/>
+                            <Input onChangeText={this.handleUrl.bind(this)}/>
                         </Item>
-
+                        <TouchableOpacity onPress={this.handleSubmit.bind(this)} style={styles.button}>
+                            <View>
+                                <Text style={{color: "white"}}>Add Pet</Text>
+                            </View>
+                        </TouchableOpacity>
                     </Form>
                 </Content>
             </Container>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    button: {
+        height: 50, 
+        width: 200, 
+        alignItems: "center", 
+        alignSelf: "center",
+        justifyContent: "center", 
+        borderRadius: 5, 
+        marginTop: 15, 
+        marginRight: 25, 
+        marginLeft: 25, 
+        backgroundColor: "green"
+    }
+})
 
 
 export default PetForm

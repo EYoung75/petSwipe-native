@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Content, H1, H2, H3, Text, Icon, Button } from "native-base"
-import { ImageBackground, TouchableOpacity } from "react-native";
+import { ImageBackground, Image, TouchableOpacity, View } from "react-native";
 
 
 class ExpandedProfile extends React.Component{
@@ -9,8 +9,8 @@ class ExpandedProfile extends React.Component{
         const pet = this.props.pets.filter(item => item.id == this.props.selected)
         return (
             <Container>
-                <ImageBackground source={{uri: pet[0].pet_picture_url}} style={{ alignSelf: "center", height: 300, width: "100%"}}>
-                <Button rounded danger onPress={() => this.props.deselect()}style={{height: 75, width: 75, position: "relative", top: 250, left: 275, alignItems: "center", justifyContent:"center"}}>
+                <ImageBackground source={{uri: pet[0].pet_picture_url}} style={{ alignSelf: "center", height: 350, width: "100%"}}>
+                <Button rounded danger onPress={() => this.props.deselect()}style={{height: 75, width: 75, position: "relative", top: 320, left: 275, alignItems: "center", justifyContent:"center"}}>
                     <Icon style={{fontSize: 50}} name="ios-arrow-down"/>
                 </Button>
                 </ImageBackground>
@@ -21,6 +21,11 @@ class ExpandedProfile extends React.Component{
                     <H3>Gender: {pet[0].pet_gender}</H3>
                     <H3>Pet Size: {pet[0].pet_size}</H3>
                     <H3>Coat Length: {pet[0].coat_length}</H3>
+                    {pet[0].house_trained ? <H3>Is House Trained</H3> : <H3>Not House Trained</H3>}
+                    {pet[0].vaccinations ? <H3>Is Vaccinated</H3> : <H3>Not Vaccinated</H3>}
+                    {pet[0].spay_neuter ? <H3>Is Spayed/Neutured</H3> : <H3>Not Spayed/Neutured</H3>}
+                    <H3>Prefers {pet[0].preferences}</H3>
+
                 </Content>
             </Container>
             // <TouchableOpacity style={{ textAlign: "left", marginTop: 25, height: 500, width: "80%", alignSelf:"center", padding: 25, margin: 10, borderRadius: "50%", borderWidth: 1, borderColor: "black", marginBottom: 10}} id={0} onPress={() => this.props.deselect()}>
