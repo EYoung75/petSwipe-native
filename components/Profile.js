@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, TouchableOpacity } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import { Header, Container, H1, ListItem, Left, Body, Right, Button, Icon, Content} from "native-base"
 import AppFooter from "./AppFooter.js"
 import { Link } from "react-router-native"
@@ -27,63 +27,25 @@ class Profile extends React.Component{
     render(){
         return(
             <View style={{height: "100%", width: "100%"}}>
-                <Container style={{height: "100%", width: "100%"}}>
-                    <Header style={{marginTop:10, alignContent: "center"}}>
+                <Container style={{height: "100%"}}>
+                    <Header style={{marginTop:10, alignContent: "center", justifyContent: "center"}}>
                         <H1>PetSwipe</H1>
                     </Header>
-                    <Content>
-                        <View>
+                    <Content style={{height: "100%"}}>
+                        <View style={styles.optionRow}>
                             <Icon name="settings"/>
-                            <Text>Settings</Text>
+                            <Text style={styles.option}>Settings</Text>
                         </View>
                         <Link to="/PetForm">
-                        <View>
+                        <View style={styles.optionRow}>
                             <Icon name="add"/>
-                            <Text>Add Pet</Text>
+                            <Text style={styles.option}>Add Pet</Text>
                         </View>
                         </Link>
-                        <View>
+                        <View style={styles.optionRow}>
                             <Icon name="ios-build"/>
-                            <Text></Text>
+                            <Text style={styles.option}>Update Profile</Text>
                         </View>
-                        {/* <ListItem icon style={{height: 80}}>
-                            <TouchableOpacity onPress={()=>this.settings()} style={{flexDirection: "row", width: "100%", justifyContent: "space-evenly"}}>
-                            <Left>
-                                <Button>
-                                    <Icon name="settings"/>
-                                </Button>
-                            </Left>
-                            <Body>
-                                <Text>Settings</Text>
-                            </Body>
-                            </TouchableOpacity>
-                        </ListItem>
-                        <Link to="PetForm">
-                        <View>
-                        <ListItem icon style={{height: 80}}>
-                            <Left>
-                                <Button>
-                                    <Icon name="add"/>
-                                </Button>
-                            </Left>
-                            <Body>
-                                <Text>Add a pet</Text>
-                            </Body>
-                        </ListItem>
-                        </View>
-                        </Link>
-                        <ListItem icon style={{height: 80}}>
-                        <TouchableOpacity onPress={()=>this.editProfile()} style={{flexDirection: "row", width: "100%", justifyContent: "space-evenly"}}>
-                            <Left>
-                                <Button>
-                                    <Icon name="ios-build"/>
-                                </Button>
-                            </Left>
-                            <Body>
-                                <Text>Edit Profile</Text>
-                            </Body>
-                        </TouchableOpacity>
-                        </ListItem> */}
                     </Content>
                 </Container>
                 <AppFooter/>
@@ -91,5 +53,25 @@ class Profile extends React.Component{
         )
     }
 }
+
+const styles = StyleSheet.create({
+    option: {
+        fontSize: 20,
+        marginLeft: 20,
+        color: "white"
+    },
+    optionRow: {
+        flexDirection: "row",
+        width: "100%",
+        height: 100,
+        backgroundColor: "#E6232C",
+        justifyContent: "center",
+        alignItems: "center",
+        borderColor: "black",
+        borderTopWidth: 2,
+        borderBottomWidth: 2,
+        marginBottom: 10
+    }
+})
 
 export default Profile

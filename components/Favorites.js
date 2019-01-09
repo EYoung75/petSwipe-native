@@ -34,7 +34,13 @@ class Favorites extends React.Component {
                 {this.props.selected === 0 ? 
                         <Content>
                             <H2 style={{alignSelf: "center", marginTop: 15, marginBottom: 10}}>Liked Pets</H2>
-                            {favoriteList}
+                            {this.props.favorites.length === 0 ? 
+                            <Text style={{alignSelf: "center", fontSize: 20}}>Start swiping and your favorites will show up here</Text>
+                            :
+                            <Content>
+                                {favoriteList}
+                            </Content>
+                            }
                         </Content>
                         :
                         <Content>

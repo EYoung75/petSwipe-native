@@ -1,5 +1,6 @@
 import React from "react"
 import { Container, Content, Form, Item, Input, Label, Icon, Picker, Header, H1, H2 } from "native-base"
+import { Link } from "react-router-native"
 
 class PetForm extends React.Component {
     constructor(){
@@ -96,10 +97,13 @@ class PetForm extends React.Component {
         return (
             <Container style={{width: "100%"}}>
                 <Header style={{marginTop:10, alignContent: "center"}}>
-                    <H1>PetSwipe</H1>
+                    <Link to="/Profile" style={{marginRight: "25%", justifyContent: "center"}}>
+                        <Icon name="ios-arrow-back"/>
+                    </Link>
+                    <H1 style={{alignSelf: "center", marginRight: "25%"}}>PetSwipe</H1>
                 </Header>
-                <H2 style={{alignSelf: "center"}}>Find a home for a pet</H2>
                 <Content style={{marginLeft: 10, marginRight: 10, marginBottom: 20}}>
+                <H2 style={{alignSelf: "center", marginTop: 10}}>Find a home for a pet</H2>
                     <Form>
                         <Item floatingLabel>
                             <Label>Pet Name:</Label>
