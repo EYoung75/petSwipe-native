@@ -12,9 +12,9 @@ class Landing extends React.Component {
         return (
                 <ImageBackground source={{uri: "https://images.pexels.com/photos/406014/pexels-photo-406014.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"}} style={styles.container}>
                     <Text style={styles.logo}>PetSwipe</Text>
-                    <Text style={{fontSize: 20}}>Find Your New Companion</Text>
+                    <Text style={{fontSize: 25, fontFamily: "Futura-CondensedMedium"}}>Find Your New Companion</Text>
                     <Container style={styles.formContainer}>
-                        <Text style={{fontSize: 20}}>Login:</Text>
+                        <Text style={{fontSize: 25, fontFamily: "Futura-CondensedMedium"}}>Login:</Text>
                         <Form style={{padding: 10}}>
                             <Label style={{padding: 5}}>Username:</Label>
                             <Item rounded style={styles.input}>
@@ -45,7 +45,8 @@ class Landing extends React.Component {
 const styles = StyleSheet.create({
     logo: {
         fontSize: 40,
-        color: "red"
+        color: "red",
+        fontFamily: "Noteworthy"
     },
     container: {
         flex: 1,

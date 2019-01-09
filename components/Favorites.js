@@ -17,8 +17,8 @@ class Favorites extends React.Component {
                                 <Thumbnail medium source={{uri: item.pet_picture_url}}/>
                             </Left>
                             <Body>
-                                <Text>{item.pet_name}</Text>
-                                <Text note>{item.species}</Text>
+                                <Text style={{fontSize: 22, fontFamily: "Futura-CondensedMedium"}}>{item.pet_name}</Text>
+                                <Text style={{fontSize: 20, fontFamily: "Futura-CondensedMedium"}} note>{item.species}</Text>
                             </Body>
                             <Right>
                                 <Icon name="ios-arrow-forward"/>
@@ -29,14 +29,14 @@ class Favorites extends React.Component {
         })
         return (
             <Container style={{height: "100%", width: "100%", alignContent: "center"}}>
-                <Header>
-                    <H1>PetSwipe</H1>
+                <Header style={{marginTop:10, alignContent: "center"}}>
+                    <H1 style={{fontFamily: "Noteworthy", color: "red", fontSize: 27, marginTop: 10}}>PetSwipe</H1>
                 </Header>
                 {this.props.selected === 0 ? 
                         <Content>
-                            <H2 style={{alignSelf: "center", marginTop: 15, marginBottom: 10}}>Liked Pets</H2>
+                            <H2 style={{alignSelf: "center", marginTop: 15, marginBottom: 10, fontSize: 28, fontFamily: "Futura-CondensedMedium"}}>Liked Pets</H2>
                             {this.props.favorites.length === 0 ? 
-                            <Text style={{alignSelf: "center", fontSize: 20}}>Start swiping and your favorites will show up here</Text>
+                            <Text style={{alignSelf: "center", fontSize: 20, fontFamily: "Futura-CondensedMedium"}}>Start swiping and your favorites will show up here</Text>
                             :
                             <Content>
                                 {favoriteList}

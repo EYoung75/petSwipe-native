@@ -4,61 +4,40 @@ import { Header, Container, H1, ListItem, Left, Body, Right, Button, Icon, Conte
 import AppFooter from "./AppFooter.js"
 import { Link } from "react-router-native"
 
-class Profile extends React.Component{
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         options: 0
-    //     }
-    // }
-
-    // settings = () => {
-    //     console.log("Settings")
-    // }
-
-    // addPet = () => {
-    //     this.setState({addPet: 1})
-    // }
-
-    // editProfile = () => {
-    //     console.log("Edit profile")
-    // }
-
-    render(){
+const Profile = () => {
         return(
             <View style={{height: "100%", width: "100%"}}>
                 <Container style={{height: "100%"}}>
-                    <Header style={{marginTop:10, alignContent: "center", justifyContent: "center"}}>
-                        <H1>PetSwipe</H1>
+                    <Header style={{marginTop:10, alignContent: "center"}}>
+                        <H1 style={{fontFamily: "Noteworthy", color: "red", fontSize: 27, marginTop: 10}}>PetSwipe</H1>
                     </Header>
                     <Content style={{height: "100%"}}>
-                        <View style={styles.optionRow}>
-                            <Icon name="settings"/>
-                            <Text style={styles.option}>Settings</Text>
-                        </View>
-                        <Link to="/PetForm">
-                        <View style={styles.optionRow}>
-                            <Icon name="add"/>
-                            <Text style={styles.option}>Add Pet</Text>
-                        </View>
+                        <Link to="/Settings">
+                            <View style={styles.optionRow}>
+                                <Icon name="settings"/>
+                                <Text style={styles.option}>Settings</Text>
+                            </View>
                         </Link>
-                        <View style={styles.optionRow}>
-                            <Icon name="ios-build"/>
-                            <Text style={styles.option}>Update Profile</Text>
-                        </View>
+                        <Link to="/PetForm">
+                            <View style={styles.optionRow}>
+                                <Icon name="add"/>
+                                <Text style={styles.option}>Add Pet</Text>
+                            </View>
+                        </Link>
                     </Content>
                 </Container>
                 <AppFooter/>
             </View>
         )
-    }
 }
 
 const styles = StyleSheet.create({
     option: {
         fontSize: 20,
         marginLeft: 20,
-        color: "white"
+        color: "white",
+        fontFamily: "Futura-CondensedMedium",
+        fontSize: 28
     },
     optionRow: {
         flexDirection: "row",

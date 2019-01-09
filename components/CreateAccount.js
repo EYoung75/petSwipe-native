@@ -67,7 +67,7 @@ class CreateAccount extends React.Component {
                     <Link to="/">
                         <Icon name="ios-arrow-back" style={{position: "relative", right: 75, paddingTop: "2%"}}/>
                     </Link>
-                    <Text style={{fontSize: 25, paddingTop: "2%"}}>Create Account</Text>
+                    <Text style={{fontSize: 25, fontFamily: "Futura-CondensedMedium", marginTop: "2%"}}>Create Account</Text>
                 </Header>
                 <Content>
                     <Form>

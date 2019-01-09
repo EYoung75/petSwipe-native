@@ -15,7 +15,8 @@ export default class App extends React.Component {
     this.state={
       pets: [],
       favorites: [],
-      selected: 0
+      selected: 0,
+      loaded: false
     }
   }
   render() {
@@ -29,15 +30,19 @@ export default class App extends React.Component {
           <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet} deselect={this.deselectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
           <Route path="/PetForm" render={() => <PetForm/> }/>
+          <Route path="/Settings" component={Settings}/>
         </View>
       </NativeRouter>
     );
   }
 
   async componentDidMount() {
-    let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
-    let json = await response.json()
-    this.setState({pets: json})
+    if(this.state.loaded === false){
+      let response = await fetch("https://petswipedb.herokuapp.com/pet_info")
+      let json = await response.json()
+      this.setState({pets: json})
+      this.setState({loaded: true})
+    } 
 }
 
 
@@ -53,15 +58,15 @@ swipeRight = (e) => {
   this.setState(prevState => ({
       favorites: [...prevState.favorites, e]
   }))
+  var newPets = this.state.pets
+  newPets.splice(e.id, 1)
+  this.setState({pets: newPets})
 }
 
 swipeLeft = (e) => {
-  var initialPets = [...this.state.pets]
-  var newPets = initialPets.indexOf(e.id-1)
-  if (newPets !== -1) {
-    initialPets.splice(newPets, 1);
-    this.setState({pets: initialPets});
-  }
+  var newPets = this.state.pets
+  newPets.splice(e.id, 1)
+  this.setState({pets: newPets})
 }
 
 }

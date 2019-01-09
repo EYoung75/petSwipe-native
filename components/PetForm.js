@@ -123,13 +123,13 @@ class PetForm extends React.Component {
         return (
             <Container style={{width: "100%"}}>
                 <Header style={{marginTop:10, alignContent: "center"}}>
-                    <Link to="/Profile" style={{marginRight: "25%", justifyContent: "center"}}>
+                    <Link to="/Profile" style={{marginRight: "24%", justifyContent: "center"}}>
                         <Icon name="ios-arrow-back"/>
                     </Link>
-                    <H1 style={{alignSelf: "center", marginRight: "25%"}}>PetSwipe</H1>
+                    <H1 style={{fontFamily: "Noteworthy", color: "red", marginRight: "26%", fontSize: 27, marginTop: 10}}>PetSwipe</H1>
                 </Header>
                 <Content style={{marginLeft: 10, marginRight: 10, marginBottom: 20}}>
-                <H2 style={{alignSelf: "center", marginTop: 10}}>Find a home for a pet</H2>
+                <H2 style={{alignSelf: "center", marginTop: 10, fontFamily:"Futura-CondensedMedium"}}>Find a home for a pet</H2>
                     <Form>
                         <Item floatingLabel>
                             <Label>Pet Name:</Label>
