@@ -14,7 +14,7 @@ class ExpandedProfile extends React.Component{
                     <Icon style={{fontSize: 50}} name="ios-arrow-down"/>
                 </Button>
                 </ImageBackground>
-                <Content style={{marginLeft: 10, margin: 10}}>
+                <View style={{marginLeft: 10, margin: 10}}>
                     <H1 style={{fontSize: 28, textDecorationLine: "underline", fontFamily: "Futura-CondensedMedium"}}>{pet.pet_name}</H1>
                     <H2 style={styles.info}>-{pet.species}</H2>
                     <H3 style={styles.info}>-Age: {pet.pet_age}</H3>
@@ -25,8 +25,10 @@ class ExpandedProfile extends React.Component{
                     {pet.vaccinations ? <H3 style={styles.info}>•Is Vaccinated</H3> : <H3 style={styles.info}>•Not Vaccinated</H3>}
                     {pet.spay_neuter ? <H3 style={styles.info}>•Is Spayed/Neutured</H3> : <H3 style={styles.info}>•Not Spayed/Neutured</H3>}
                     <H3 style={styles.info}>•Prefers {pet.preferences}</H3>
-
-                </Content>
+                    <Button rounded info onPress={() => console.log("Hi")} style={{height: 75, width: 75, position: "relative", left: 265, bottom: 80, alignItems: "center", justifyContent: "center"}}>
+                        <Icon name="ios-chatbubbles" style={{fontSize: 50}}/>
+                    </Button>
+                </View>
             </Container>
             // <TouchableOpacity style={{ textAlign: "left", marginTop: 25, height: 500, width: "80%", alignSelf:"center", padding: 25, margin: 10, borderRadius: "50%", borderWidth: 1, borderColor: "black", marginBottom: 10}} id={0} onPress={() => this.props.deselect()}>
             //     <Image source={{uri: pet[0].pet_picture_url}} style={{ alignSelf: "center", height: 200, width: 200, borderRadius: 100}}/>

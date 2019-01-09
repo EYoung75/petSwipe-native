@@ -26,7 +26,6 @@ export default class App extends React.Component {
           <Route exact path="/" component={Landing}></Route>
           <Route path="/createAccount" component={CreateAccount}></Route>
           <Route path="/Swipe" render={() => <Swipe cards={this.state.pets} swipeRight={this.swipeRight} swipeLeft={this.swipeLeft}></Swipe>}></Route>
-          <Route path="/Settings" component={Settings}/>
           <Route path="/Favorites" render={() => <Favorites {...this.state} selectPet={this.selectPet} deselect={this.deselectPet}/>}/>
           <Route path="/Profile" component={Profile}/>
           <Route path="/PetForm" render={() => <PetForm/> }/>
