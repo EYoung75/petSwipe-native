@@ -1,5 +1,5 @@
 # petSwipe-native
-This is my first React Native project that serves as a sort of 'playground' as my React Native skills grow. It is centered around a swipable user interface and the concept of finding homes for animals in need of an adoptive family. 
+This is my first React Native project that serves as a sort of 'playground' as my React Native skills grow. It is centered around a swipe-able user interface and the concept of finding homes for animals in need of an adoptive family. 
 
 ## Technologies Used:
 This app communicates with a backend built up from Node.js, PostgreSQL and Knex and integrates some component functionality from the component library "NativeBase".
