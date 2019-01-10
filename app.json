@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "PetSwipe",
-    "description": "This project is really great.",
+    "description": "My first React Native app, centered around the concept of finding a home for pets in need and based around a swipable user interface.",
     "slug": "petSwipe-react-native",
     "privacy": "public",
     "sdkVersion": "31.0.0",
