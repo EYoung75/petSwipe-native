@@ -8,23 +8,17 @@ const AppFooter = () => {
             <FooterTab>
                 <Button>
                     <Link to="/Profile">
-                        <TouchableOpacity>
-                            <Icon name="person" style={{fontSize: 40, color: "#0960FF"}}></Icon>
-                        </TouchableOpacity>
+                        <Icon name="person" style={{fontSize: 40, color: "#0960FF"}}></Icon>
                     </Link>
                 </Button>
                 <Button>
                     <Link to="/Swipe">
-                        <TouchableOpacity>
-                            <Icon name="ios-albums" style={{fontSize: 40, color: "black"}}></Icon>
-                        </TouchableOpacity>
+                        <Icon name="ios-albums" style={{fontSize: 40, color: "black"}}></Icon>
                     </Link>
                 </Button>
                 <Button>
                     <Link to="/Favorites">
-                        <TouchableOpacity>
-                            <Icon name="heart" style={{fontSize: 40, color: "red"}}></Icon>
-                        </TouchableOpacity>
+                        <Icon name="heart" style={{fontSize: 40, color: "red"}}></Icon>
                     </Link>
                 </Button>
             </FooterTab>

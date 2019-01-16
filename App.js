@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, View} from 'react-native'
+import { StyleSheet, View } from "react-native"
 import { NativeRouter, Route } from "react-router-native"
 import Landing from "./components/Landing.js"
 import CreateAccount from './components/CreateAccount.js'

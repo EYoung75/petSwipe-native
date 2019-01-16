@@ -14,3 +14,5 @@ Additionally, I plan on integrating in-app messaging for communication between u
 1) Download Expo Client app through app store.
 2) In your browser, navigate to this URL: https://expo.io/@eyoung75/petSwipe-react-native 
 3) With your Expo Client app, scan the QR code provided at the above URL
+
+![](petswipe.gif)

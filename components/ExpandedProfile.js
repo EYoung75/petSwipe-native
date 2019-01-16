@@ -9,7 +9,7 @@ class ExpandedProfile extends React.Component{
         return (
             <Container>
                 <ImageBackground source={{uri: pet.pet_picture_url}} style={{ alignSelf: "center", height: 350, width: "100%"}}>
-                    <Button rounded danger onPress={() => this.props.deselect()}style={{height: 75, width: 75, position: "relative", top: 320, left: 275, alignItems: "center", justifyContent:"center"}}>
+                    <Button rounded danger onPress={() => this.props.deselect()} style={{height: 75, width: 75, position: "relative", top: 320, left: 275, alignItems: "center", justifyContent:"center"}}>
                         <Icon style={{fontSize: 50}} name="ios-arrow-down"/>
                     </Button>
                 </ImageBackground>
