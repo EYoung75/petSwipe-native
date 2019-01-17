@@ -2,6 +2,8 @@ import React from "react"
 import { Container, Button, Header, Content, Icon, Picker, Form, Input, Item, Label, Text } from "native-base"
 import { Link, Redirect } from "react-router-native"
 
+const isOk = response => response.ok ? response.json() : response.status
+
 class CreateAccount extends React.Component {
     constructor(props){
         super(props);
@@ -21,35 +23,58 @@ class CreateAccount extends React.Component {
     }
 
     handleSubmit(){
-        if(this.state.selected === "adopter"){
-            var newUser = {
-                user_name_a: this.state.username,
-                user_name_a_pw: this.state.password,
-                contact_email: this.state.email,
-                location_city: this.state.location
-            }
-            fetch("https://petswipedb.herokuapp.com/users_a",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newUser)
-            })
-        } else if(this.state.selected === "adoptee"){
-            var newUser = {
-                user_name_b: this.state.username,
-                user_name_b_pw: this.state.password,
-                contact_email: this.state.email,
-                location_city: this.state.location
-            }
-            fetch("https://petswipedb.herokuapp.com/users_a",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(newUser)
-            })
+        let newUser = {
+            user_name_a: this.state.username,
+            user_name_a_pw: this.state.password,
+            contact_email: this.state.email,
+            location_city: this.state.location
         }
+        console.log('newUser', newUser)
+        fetch("http://localhost:4444/users_a/",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(newUser)
+        })
+        .then(isOk)
+        .then(response => console.log(response))
+        .then(response => {
+            if(response === 500) {
+                alert("Sorry, that user already exists")
+            } else {
+                alert("New user created")
+            }
+        })
+        // if(this.state.selected === "adopter"){
+        //     var newUser = {
+        //         user_name_a: this.state.username,
+        //         user_name_a_pw: this.state.password,
+        //         contact_email: this.state.email,
+        //         location_city: this.state.location
+        //     }
+        //     fetch("https://petswipedb.herokuapp.com/users_a",{
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(newUser)
+        //     })
+        // } else if(this.state.selected === "adoptee"){
+        //     var newUser = {
+        //         user_name_b: this.state.username,
+        //         user_name_b_pw: this.state.password,
+        //         contact_email: this.state.email,
+        //         location_city: this.state.location
+        //     }
+        //     fetch("https://petswipedb.herokuapp.com/users_a",{
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(newUser)
+        //     })
+        // }
     }
 
     handleInput = (e) => {
@@ -87,9 +112,9 @@ class CreateAccount extends React.Component {
                             <Input onChange={this.handleInput.bind(this)} name="location"/>
                         </Item>
                         <Button block success style={{margin: 20}} onPress={() => this.handleSubmit()}>
-                            <Link to="/Swipe"> 
+                      
                                 <Text>Create Account</Text>
-                            </Link>
+                            
                         </Button>                   
                     </Form>
                 </Content>
